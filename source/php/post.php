@@ -94,6 +94,7 @@ if($error == ''){
         //MENSAJE A ENVIAR
         $mail->setFrom(EMAIL_USER);
         $mail->addAddress($enviarA);
+        $mail->addCC($email);
         $mail->isHTML(true);
 
         //ASUNTO
@@ -110,11 +111,14 @@ if($error == ''){
             )
         );
 
-        $success = $mail->send();
-        echo 'ok';
-
+        // Enviar E-MAIL
+        if(!$mail->send()) {
+            echo 'No se pudo enviar el mensaje... '.$mail->ErrorInfo;
+        } else {
+            echo 'ok';
+        }
     } catch (Exception $exception) {
-        echo 'Algo salio mal: ', $exception->getMessage();
+        echo 'Algo salio mal, excepcion: ', $exception->getMessage();
     }
 
 }else{
