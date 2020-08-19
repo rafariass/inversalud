@@ -76,12 +76,17 @@ if($error == ''){
     $cuerpo .= "<b>Nombre: </b>".$nombre."<br>";
     $cuerpo .= "<b>Email: </b>".$email."<br>";
     $cuerpo .= "<b>Telefono: </b>".$telefono."<br>";
-    $cuerpo .= "<b>Mensaje: </b>".$mensaje."<br>";
-    $cuerpo .= "<b>Enviado el: </b>".date('d/m/Y', time('H:i:s'));
+    $cuerpo .= "<b>Mensaje: </b>".$mensaje;
+    // $cuerpo .= "<br><b>Enviado el: </b>".date('d/m/Y', time('H:i:s'));
 
     // PHPMailer
     $mail = new PHPMailer(true);
     try {
+        // 0 -> Sin mensajes de debug
+        // 1 -> Diálogo de cliente a servidor
+        // 2 -> Diálogo de cliente a servidor y viceversa
+        // 3 -> Códigos de estado de cada fase de la conexión, además del diálogo entre cliente y servidor/servidor y cliente
+        // 4 -> Devuelve a bajo nivel toda la traza de la conversación entre cliente y servidor SMTP
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';

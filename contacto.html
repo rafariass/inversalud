@@ -399,30 +399,25 @@
     <!-- Google recaptcha -->
     <script type="text/javascript">
       $('#formulario').submit(function (event) {
-        console.log('1');
         event.preventDefault();
       });
 
       function onload() {
-        console.log('2');
         var element = document.getElementById('submit');
         element.onclick = validate;
       }
 
       function validate(event) {
-        console.log('3');
         event.preventDefault();
         grecaptcha.execute();
       }
 
       function onSubmit(token) {
-        console.log('4');
         validar();
       }
 
       // **Solo funciona con la ver 3.3.1.min de Jquery**
       function validar() {
-        console.log('valida');
         var datos = $('#formulario').serialize(); // Toma todos los datos del formulario y los guarda en un arreglo.
         $.ajax({
           // Llamamos a ajax
