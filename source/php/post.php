@@ -111,12 +111,14 @@ if($error == ''){
             )
         );
 
+        $success = @$mail->send();
+
         // Enviar E-MAIL
-        if(!$mail->send()) {
-            echo 'No se pudo enviar el mensaje... '.$mail->ErrorInfo;
-        } else {
-            echo 'ok';
-        }
+        // if(!$mail->send()) {
+        //     echo 'No se pudo enviar el mensaje... '.$mail->ErrorInfo;
+        // } else {
+        //     echo 'ok';
+        // }
     } catch (Exception $exception) {
         echo 'Algo salio mal, excepcion: ', $exception->getMessage();
     }
