@@ -82,7 +82,7 @@ if($error == ''){
     // PHPMailer
     $mail = new PHPMailer(true);
     try {
-        $mail->SMTPDebug = 2;
+        $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
@@ -101,6 +101,7 @@ if($error == ''){
         $mail->Subject = 'Solicitud de contacto para: '.$especialidad;
 
         //CUERPO
+        $mail->ChartSet = 'utf-8';
         $mail->Body = $cuerpo;
 
         $mail->SMTPOptions = array(
@@ -111,7 +112,7 @@ if($error == ''){
             )
         );
 
-        $success = @$mail->send();
+        $success = $mail->send();
 
         // Enviar E-MAIL
         // if(!$mail->send()) {
