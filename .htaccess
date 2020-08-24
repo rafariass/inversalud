@@ -1,4 +1,25 @@
-RewriteEngine On 
+Options All -Indexes
 RewriteBase /
+RewriteEngine On 
+
+# Controla el acceso a sub-carpetas
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.html?url=$1 [QSA,L]
+
+# Oculta extensión Html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+RewriteCond %{HTTP_HOST} ^www\.inversalud\.herokuapp\.com$ [NC]  
+RewriteRule ^(.*)$ https://inversalud.herokuapp.com/$1 [R=301,QSA,L]
+
+
+# Redireccionamiento Http a Https
 RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https://inversalud.herokuapp.com/$1 [R,L]
+
+# Controla el error 404
+ErrorDocument 404 /404.html
+
