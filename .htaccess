@@ -1,11 +1,5 @@
-Options All -Indexes
 RewriteBase /
 RewriteEngine On 
-
-# Controla el acceso a sub-carpetas
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.html?url=$1 [QSA,L]
 
 # Redireccionamiento Http a Https
 RewriteCond %{SERVER_PORT} 80
