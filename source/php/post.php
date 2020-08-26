@@ -213,7 +213,7 @@ if($error == ''){
         $mail->Port = 587;
 
         //MENSAJE A ENVIAR
-        $mail->setFrom(EMAIL_USER);
+        $mail->setFrom(EMAIL_USER, 'Notificacion InverSalud');
         $mail->addAddress($enviarA);
         $mail->addCC($email);
         $mail->isHTML(true);
