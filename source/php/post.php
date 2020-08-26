@@ -50,7 +50,7 @@ if (empty(trim($_POST['especialidad']))) {
             // $enviarA = 'contacto@inversalud.cl';
             $enviarA = 'raulfaria@gmail.com';
             break;
-        case "Pabellón":
+        case "Pabellon":
             // $enviarA = 'pabellon@Inversalud.cl';
             $enviarA = 'raulfaria@gmail.com';
             break;
