@@ -2,8 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require '../../vendor/autoload.php';
-require 'constantes.php';
+require 'https://inversalud.herokuapp.com/vendor/autoload.php';
+require 'https://inversalud.herokuapp.com/source/php/constantes.php';
 
 // DECLARA UNA VARIABLE DE ERROR VACIA
 $error = '';
@@ -148,7 +148,7 @@ if($error == ''){
                                 <!-- Web -->
                                 <td width="50%" align="left" valign="center">
                                     <span style="text-align: left; font-size: 14px; font-style: italic; font-weight: 600; text-decoration: none">
-                                    <a href="https://inversalud.cl/" style="color: #235b90" target="_blank">www.inversalud.cl</a>
+                                    <a href="https://inversalud.herokuapp.com" style="color: #235b90" target="_blank">www.inversalud.cl</a>
                                     </span>
                                 </td><!-- Web -->
                                 <!-- Examenes -->
