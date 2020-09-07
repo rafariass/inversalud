@@ -2,8 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require 'https://inversalud.herokuapp.com/vendor/autoload.php';
-require 'https://inversalud.herokuapp.com/source/php/constantes.php';
+require '../../vendor/autoload.php';
+require 'constantes.php';
 
 // DECLARA UNA VARIABLE DE ERROR VACIA
 $error = '';
