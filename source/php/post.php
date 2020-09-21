@@ -39,24 +39,19 @@ if (empty(trim($_POST['especialidad']))) {
     $especialidad = filter_var(trim($_POST['especialidad']), FILTER_SANITIZE_STRING);
     switch ($especialidad) {
         case "Laboratorio":
-            // $enviarA = 'tomademuestras@inversalud.cl';
-            $enviarA = 'raulfaria@gmail.com';
+            $enviarA = 'tomademuestras@inversalud.cl';
             break;
         case "Ecotomografia":
-            // $enviarA = 'ecotomografia@inversalud.cl';
-            $enviarA = 'raulfaria@gmail.com';
+            $enviarA = 'ecotomografia@inversalud.cl';
             break;
         case "Rayos y Mamo":
-            // $enviarA = 'contacto@inversalud.cl';
-            $enviarA = 'raulfaria@gmail.com';
+            $enviarA = 'contacto@inversalud.cl';
             break;
         case "Pabellon":
-            // $enviarA = 'pabellon@Inversalud.cl';
-            $enviarA = 'raulfaria@gmail.com';
+            $enviarA = 'pabellon@Inversalud.cl';
             break;
         case "Procedimientos":
-            // $enviarA = 'contacto@inversalud.cl';
-            $enviarA = 'raulfaria@gmail.com';
+            $enviarA = 'contacto@inversalud.cl';
             break;
         default:
             $error .= 'La especialidad: '.$especialidad.' es inválida. </br>';
