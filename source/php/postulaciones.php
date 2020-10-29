@@ -52,21 +52,10 @@ if (empty(trim($_POST['area']))) {
 
 
 // VALIDA EL ADJUNTO
-//$cv_name = $_FILES['cv']['name'];
-//$cv_ruta = $_FILES['cv']['tmp_name'];
+$error .=  $_FILES['cv']['name'];
+$error .=  $_FILES['cv']['tmp_name'];
 
-// VALIDA EL ADJUNTO
-if (array_key_exists('cv', $_FILES)) {
-    $ext = PHPMailer::mb_pathinfo($_FILES['cv']['name'], PATHINFO_EXTENSION);
-    $uploadfile = tempnam(sys_get_temp_dir(), hash('sha256', $_FILES['cv']['name'])) . '.' . $ext;
-    if (move_uploaded_file($_FILES['cv']['tmp_name'], $uploadfile)) {
-        if ($mail->addAttachment($uploadfile, 'My uploaded file')) {
-            $error .= 'Failed to attach file ' . $_FILES['cv']['name'].' ----'.$_FILES['cv']['tmp_name'].' ----' . $uploadfile;
-        }
-    } else {
-        $error .= 'Failed to move file to ' . $uploadfile;
-    }
-}
+
 
 // CUERPO DEL MENSAJE
 if($error == ''){
