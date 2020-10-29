@@ -52,14 +52,21 @@ if (empty(trim($_POST['area']))) {
 
 
 // VALIDA EL ADJUNTO
-$cv = $_FILES['cv'];
+//$cv_name = $_FILES['cv']['name'];
+//$cv_ruta = $_FILES['cv']['tmp_name'];
 
-
-
-
-
-
-
+// VALIDA EL ADJUNTO
+if (array_key_exists('cv', $_FILES)) {
+    $ext = PHPMailer::mb_pathinfo($_FILES['cv']['name'], PATHINFO_EXTENSION);
+    $uploadfile = tempnam(sys_get_temp_dir(), hash('sha256', $_FILES['cv']['name'])) . '.' . $ext;
+    if (move_uploaded_file($_FILES['cv']['tmp_name'], $uploadfile)) {
+        if (!$mail->addAttachment($uploadfile, 'My uploaded file')) {
+            $error .= 'Failed to attach file ' . $_FILES['cv']['name'];
+        }
+    } else {
+        $error .= 'Failed to move file to ' . $uploadfile;
+    }
+}
 
 // CUERPO DEL MENSAJE
 if($error == ''){
@@ -99,8 +106,7 @@ if($error == ''){
         $mail->ChartSet = 'utf-8';
         $mail->Body = $cuerpo;
 
-        //ADJUNTO
-        $mail->AddAttachment($cv['tmp_name'], $cv['name']); 
+        $mail->AddAttachment($cv_name, $cv_ruta); 
 
         $mail->SMTPOptions = array(
             'ssl' => array(
