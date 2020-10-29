@@ -39,8 +39,9 @@
     <!-- Navbar -->
     <div class="container-fluid bg-light fixed-top shadow-2 px-0">
       <div class="m-0 p-0" style="background-color: #235b90">
-        <p class="lead-navbar text-center text-white m-0 px-0 py-1">Trabaje con nosotros. 
-          <a href="https://inversalud.cl/postulaciones.html" class="text-white font-weight-bold" style="text-decoration: none"><u>Postule aquí</u></a>.
+        <p class="lead-navbar text-center text-white m-0 px-0 py-1">
+          Trabaje con nosotros. <a href="https://inversalud.cl/postulaciones.html" class="text-white font-weight-bold" style="text-decoration: none"><u>Postule aquí</u></a
+          >.
         </p>
       </div>
       <nav class="navbar navbar-expand-xl navbar-light bg-light px-3">
@@ -135,10 +136,10 @@
                 </div>
               </div>
               <div class="row form-group">
-                <label for="nombre" class="col-form-label col-md-4">Area de desempeño:</label>
+                <label for="area" class="col-form-label col-md-4">Area de desempeño:</label>
                 <div class="col-md-8">
                   <div class="input-group">
-                    <select class="custom-select form-control outline lead" name="especialidad" id="especialidad">
+                    <select class="custom-select form-control outline lead" name="area" id="area">
                       <option selected>Administrativa</option>
                       <option>Clínica</option>
                     </select>
@@ -150,9 +151,9 @@
                 <label for="cv" class="col-form-label col-md-4">Curriculum Vitae:</label>
                 <div class="col-md-8">
                   <div class="custom-file mb-3">
-                      <input type="file" name="cv" id="cv" class="custom-file-input" accept=".pdf" required>
-                      <label class="custom-file-label lead" for="validatedCustomFile">Seleccionar Archivo</label>
-                      <div class="invalid-feedback lead">Invalid custom file feedback</div>
+                    <input type="file" name="cv" id="cv" class="custom-file-input" accept=".pdf" />
+                    <label class="custom-file-label lead" for="validatedCustomFile">Seleccionar Archivo</label>
+                    <div class="invalid-feedback lead">Invalid custom file feedback</div>
                   </div>
                 </div>
               </div>
@@ -164,7 +165,7 @@
               <button
                 type="submit"
                 class="btn btn-salud outline shadow boton404 mt-3 w-100 g-recaptcha"
-                data-sitekey="6Ld6aM8ZAAAAAHBCYmPSBvaqevWVXpQlsworMuj4"
+                data-sitekey="6LeRv8AZAAAAAIqtIzbSHk9Yqhhv_VTYhpVWtZHF"
                 data-callback="onSubmit"
                 id="sendbutton"
                 name="sendbutton"
@@ -379,7 +380,7 @@
     <script type="text/javascript" src="source/js/scrollToTop.js"></script>
     <script type="text/javascript" src="source/js/tooltip.js"></script>
     <script type="text/javascript" src="source/js/fontawesome.js"></script>
-    <script type="text/javascript" src="source/js/bs-custom-file-input.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="source/js/bs-custom-file-input.js"></script>
 
     <!-- Google recaptcha -->
     <script type="text/javascript">
@@ -390,6 +391,7 @@
       function onload() {
         var element = document.getElementById('submit');
         element.onclick = validate;
+        console.log('2');
       }
 
       function validate(event) {
@@ -403,11 +405,12 @@
 
       // **Solo funciona con la ver 3.3.1.min de Jquery**
       function validar() {
+        console.log('1');
         var datos = $('#formulario').serialize(); // Toma todos los datos del formulario y los guarda en un arreglo.
         $.ajax({
           // Llamamos a ajax
           type: 'post', // Metodo Post del formulario
-          url: 'source/php/post.php', // Directorio del formulario php de validaciones.
+          url: 'source/php/postulaciones.php', // Directorio del formulario php de validaciones.
           data: datos, // Enviamos el arreglo con los datos.
           success: function (respuesta) {
             // Esperamos una respuesta del Formulario.php
@@ -428,8 +431,8 @@
         document.getElementById('nombre').disabled = true;
         document.getElementById('telefono').disabled = true;
         document.getElementById('email').disabled = true;
-        document.getElementById('especialidad').disabled = true;
-        document.getElementById('mensaje').disabled = true;
+        document.getElementById('area').disabled = true;
+        document.getElementById('cv').disabled = true;
         $('#sendbutton').addClass('d-none');
       }
 
@@ -445,8 +448,8 @@
     <!-- bs-custom-file-input -->
     <script type="text/javascript">
       $(document).ready(function () {
-        bsCustomFileInput.init()
-      })
+        bsCustomFileInput.init();
+      });
     </script>
   </body>
 </html>
