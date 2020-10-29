@@ -558,6 +558,26 @@ a:not([href]):hover {
   }
 }
 
+.wallpaper-postulaciones {
+  -o-background-image: -o-linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/celphone.jpg);
+  -moz-background-image: -moz-linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/celphone.jpg);
+  -webkit-background-image: -webkit-linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/celphone.jpg);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/celphone.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .wallpaper-postulaciones {
+    -o-background-image: -o-linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/pc.jpg);
+    -moz-background-image: -moz-linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/pc.jpg);
+    -webkit-background-image: -webkit-linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/pc.jpg);
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.9)), url(../img/postulaciones/pc.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
 /* -------------------------------------------------- */
 
 .dropdown-item:hover,
@@ -578,4 +598,16 @@ a:not([href]):hover {
   background-color: var(--salud-color-new);
 }
 
+/* -------------------------------------------------- */
+
+
+/* Reescribir custom-file-input de Bootstrap
+-------------------------------------------------- */
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "Elegir archivo";
+}
+
+.custom-file-label::after {
+  content: "Elegir archivo";
+}
 /* -------------------------------------------------- */
