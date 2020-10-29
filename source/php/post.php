@@ -199,7 +199,7 @@ if($error == ''){
         // 2 -> Diálogo de cliente a servidor y viceversa
         // 3 -> Códigos de estado de cada fase de la conexión, además del diálogo entre cliente y servidor/servidor y cliente
         // 4 -> Devuelve a bajo nivel toda la traza de la conversación entre cliente y servidor SMTP
-        $mail->SMTPDebug = 2;
+        $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
