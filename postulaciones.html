@@ -36,9 +36,9 @@
     <div class="scrollTop" onclick="scrollToTop();"></div>
     <!-- Up Button -->
 
-    <!-- Navbar 235b90 -->
+    <!-- Navbar -->
     <div class="container-fluid bg-light fixed-top shadow-2 px-0">
-      <div class="m-0 p-0" style="background-color: #fff">
+      <div class="m-0 p-0" style="background-color: #235b90">
         <p class="lead-navbar text-center text-white m-0 px-0 py-1">
           Trabaje con nosotros. <a href="https://inversalud.cl/postulaciones.html" class="text-white font-weight-bold" style="text-decoration: none"><u>Postule aquí</u></a
           >.
@@ -106,13 +106,16 @@
             <div class="container pb-3">
               <hr style="background-color: #235b90" />
             </div>
+
             <form id="formulario" class="lead" enctype="multipart/form-data">
+
               <div class="row form-group">
                 <label for="nombre" class="col-form-label col-md-4">Nombre y Apellido:</label>
                 <div class="col-md-8">
-                  <input type="text" name="nombre" id="nombre" value="" class="form-control" minlength="5" maxlength="30" pattern="[A-Z,a-z]*" autocomplete="off" required />
+                  <input type="text" name="nombre" id="nombre" value="" class="form-control postulaciones" minlength="5" maxlength="30" autocomplete="on"  />
                 </div>
               </div>
+
               <div class="row form-group">
                 <label for="email" class="col-form-label col-md-4">E-mail:</label>
                 <div class="col-md-8">
@@ -120,10 +123,11 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">@</span>
                     </div>
-                    <input type="email" name="email" id="email" value="" class="form-control" minlength="5" maxlength="50" autocomplete="off" required />
+                    <input type="email" name="email" id="email" value="" class="form-control postulaciones" minlength="5" maxlength="50" autocomplete="off"  />
                   </div>
                 </div>
               </div>
+
               <div class="row form-group">
                 <label for="telefono" class="col-form-label col-md-4">Celular:</label>
                 <div class="col-md-8">
@@ -131,15 +135,16 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">+569</span>
                     </div>
-                    <input type="number" name="telefono" id="telefono" value="" class="form-control" minlength="8" maxlength="8" autocomplete="off" required />
+                    <input type="number" name="telefono" id="telefono" value="" class="form-control postulaciones" minlength="8" maxlength="8" autocomplete="off"  />
                   </div>
                 </div>
               </div>
+
               <div class="row form-group">
                 <label for="area" class="col-form-label col-md-4">Area de desempeño:</label>
                 <div class="col-md-8">
                   <div class="input-group">
-                    <select class="custom-select form-control outline lead" name="area" id="area">
+                    <select class="custom-select form-control outline lead postulaciones" name="area" id="area">
                       <option selected>Administrativa</option>
                       <option>Clínica</option>
                     </select>
@@ -151,25 +156,21 @@
                 <label for="cv" class="col-form-label col-md-4">Curriculum Vitae:</label>
                 <div class="col-md-8">
                   <div class="custom-file mb-3">
-                    <input type="file" name="cv" id="cv" class="custom-file-input" accept=".pdf" />
-                    <label class="custom-file-label lead" for="validatedCustomFile">Seleccionar Archivo</label>
-                    <div class="invalid-feedback lead">Invalid custom file feedback</div>
+                    <div class="input-group postulaciones">
+                      <input type="file" name="file" id="file" class="custom-file-input postulaciones" accept=".pdf" />
+                      <label class="custom-file-label lead postulaciones" for="validatedCustomFile">Seleccionar Archivo</label>
+                      <div class="invalid-feedback lead">Invalid custom file feedback</div>
+                    </div>
                   </div>
                 </div>
               </div>
-
               <!-- Key InverSalud v3          :   6Ld6aM8ZAAAAAHBCYmPSBvaqevWVXpQlsworMuj4 -->
               <!-- inversalud.herokuapp.com v3:   6LeRv8AZAAAAAIqtIzbSHk9Yqhhv_VTYhpVWtZHF-->
+              <!-- LOCALHOST:                     6Leo2GkUAAAAACXApPs6tUo8ErYVLXnT7Nt0J2Xl -->
               <div class="alert alert-success d-none" id="mensajeExito">Mensaje enviado correctamente.</div>
               <div class="alert alert-danger d-none" id="mensajeError"></div>
-              <button
-                type="submit"
-                class="btn btn-salud outline shadow boton404 mt-3 w-100 g-recaptcha"
-                data-sitekey="6LeRv8AZAAAAAIqtIzbSHk9Yqhhv_VTYhpVWtZHF"
-                data-callback="onSubmit"
-                id="sendbutton"
-                name="sendbutton"
-              >
+              <div class="statusMsg" id="statusMsg"></div>
+              <button type="submit" class="btn btn-salud outline shadow boton404 mt-3 w-100 postulaciones" value="submit">
                 <i class="fas fa-paper-plane"></i> Postular
               </button>
               <p class="small text-center pt-2">
@@ -382,67 +383,42 @@
     <script type="text/javascript" src="source/js/fontawesome.js"></script>
     <script type="text/javascript" src="source/js/bs-custom-file-input.js"></script>
 
-    <!-- Google recaptcha -->
+    <!-- Formulario -->
     <script type="text/javascript">
-      $('#formulario').submit(function (event) {
-        event.preventDefault();
-      });
-
-      function onload() {
-        var element = document.getElementById('submit');
-        element.onclick = validate;
-      }
-
-      function validate(event) {
-        event.preventDefault();
-        grecaptcha.execute();
-      }
-
-      function onSubmit(token) {
-        validar();
-      }
-
-      // **Solo funciona con la ver 3.3.1.min de Jquery**
-      function validar() {
-        var datos = $('#formulario').serialize(); // Toma todos los datos del formulario y los guarda en un arreglo.
-        concole.log(datos);
-        $.ajax({
-          // Llamamos a ajax
-          type: 'post', // Metodo Post del formulario
-          url: 'source/php/post2.php', // Directorio del formulario php de validaciones.
-          data: datos, // Enviamos el arreglo con los datos.
-          success: function (respuesta) {
-            // Esperamos una respuesta del Formulario.php
-            if (respuesta === 'ok') {
-              // Llamamos a la funcion correspondiente segun validacion de php.
-              correcto(); // Function mensaje enviado.
-            } else {
-              concole.log(respuesta);
-              error(respuesta); // Function mensaje no enviado.
+      $(document).ready(function(e){
+        $("#formulario").on('submit', function(e){
+          e.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: 'source/php/postulaciones.php',
+            data: new FormData(this),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+              $('.postulaciones').attr("disabled","disabled");
+              $('#formulario').css("opacity",".5");
+              $('#error1').css("display","none");
+              $('#mensajeExito').removeClass('d-none');
+            },
+            success: function(response){
+              //console.log(response);
+              $('.statusMsg').html('');
+              if(response.status == 1){
+                console.log("Funciona");
+                $('#formulario')[0].reset();
+                $('.statusMsg').html('<p class="alert alert-success">'+response.message+'</p>');
+              }else{
+                $('.statusMsg').html('<p class="alert alert-danger" id="error1">'+response.message+'</p>');
+              }
+              $('#formulario').css("opacity","");
+              $(".postulaciones").removeAttr("disabled");
+              $('#mensajeExito').addClass('d-none');
             }
-          },
+          });
         });
-      }
-
-      function correcto() {
-        // Quita el d-none del la alerta mensaje enviado.
-        $('#mensajeError').addClass('d-none');
-        $('#mensajeExito').removeClass('d-none');
-        document.getElementById('nombre').disabled = true;
-        document.getElementById('telefono').disabled = true;
-        document.getElementById('email').disabled = true;
-        document.getElementById('area').disabled = true;
-        document.getElementById('cv').disabled = true;
-        $('#sendbutton').addClass('d-none');
-      }
-
-      function error(respuesta) {
-        // Quita el d-none del la alerta mensaje no enviado.
-        $('#mensajeExito').addClass('d-none');
-        $('#mensajeError').html(respuesta);
-        $('#mensajeError').removeClass('d-none');
-        grecaptcha.reset();
-      }
+      });
     </script>
 
     <!-- bs-custom-file-input -->
