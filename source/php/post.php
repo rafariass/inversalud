@@ -57,7 +57,6 @@ if (empty(trim($_POST['especialidad']))) {
             $error .= 'La especialidad: '.$especialidad.' es inválida. </br>';
             break;
     }
-    $enviarA = 'raulfaria@gmail.com'; //Borrar esta linea
 }
 
 // VALIDA EL CAMPO MENSAJE

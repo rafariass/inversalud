@@ -93,7 +93,7 @@ if($error == ''){
         $mail->isHTML(true);
 
         //ASUNTO
-        $mail->Subject = 'Solicitud de contacto para: '.$especialidad;
+        $mail->Subject = 'Solicitud de postulacion: '.$area;
 
         //CUERPO
         $mail->ChartSet = 'utf-8';
