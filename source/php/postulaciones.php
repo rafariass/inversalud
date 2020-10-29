@@ -51,9 +51,6 @@ if (empty(trim($_POST['area']))) {
 
 
 
-// VALIDA EL ADJUNTO
-$error .=  $_FILES['cv']['name'];
-$error .=  $_FILES['cv']['tmp_name'];
 
 
 
