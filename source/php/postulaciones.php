@@ -70,7 +70,7 @@ if($response['message'] == ''){
 
             //MENSAJE A ENVIAR
             $mail->setFrom(EMAIL_USER, 'Notificacion InverSalud');
-            $mail->addAddress('raulfaria@gmail.com');
+            $mail->addAddress('finanzas@inversalud.cl');
             $mail->addCC($email);
             $mail->isHTML(true);
 
